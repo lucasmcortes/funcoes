@@ -1,4 +1,4 @@
-/* Quando desmarca o input/select/textarea e ele tá com value diferente de nada */
+/* Quando desmarca o input/select/textarea e ele tá com value diferente de nada (usandojQuery) */
 /* o backgruond-color e a cor do texto mudam de acordo com o que tá definido no :root {} no styles */
 /* (tipo: <style> :root {--pal_cor_um:#FFFFFF;}</style>) */
 /* (ou outra cor que colocar no lugar das 'var(--cor_um)'), usando o formato #FFFFFF (hex) */
