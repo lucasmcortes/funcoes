@@ -15,6 +15,9 @@
 /* loadinginiciado.js */
         /* E coloca ela pra ficar invisível */
         /* E prepara o <body> pra ficar com o #loader enquanto carrega a página */
+	/* position:fixed pra ficar quietinho esperando */
+	/* width:100% pra ocupar a página toda e deixar o loader ficar no centro horizontal */
+	/* overflow-y:scroll pra posicionar a barra de rolagem mesmo sem precisar e a página continuar no mesmo lugar (pro caso de aparecer uma [naquela página])*/
         <script>
         	$("extremos").css({"display": "none"});
         	$("body").css({"position": "fixed", "width": "100%", "overflow-y": "scroll"});
@@ -32,6 +35,7 @@
 /* loadingcompleto.js */
         /* Mostra a página de novo, deixando o #loader invisível */
         /* E a página (já lida pelo DOM) embaixo é mostrada com o "display:block" na <extremos> */
+	/* E reseta o position e overflow-y do <body> pra página se comportar adequadamente */
         $("#loader").fadeOut("fast", function() {
         	$("extremos").css({"display": "block"});
         	$("body").css({"position": "static", "width": "100%", "overflow-y": "visible"});
