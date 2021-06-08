@@ -43,7 +43,7 @@
                         // Seta uma opção random entre 0 (a primeira) e o máximo de opções do array $opcao na variável $opcoes
                         $opcaoRand = mt_rand(0,$opcoes);
 
-                        // Se no array $opcao tem a opção de número $opcaoRand
+                        // Se no array $opcao tem a opção de número $opcaoRand com algum conteúdo
                         if ($opcao[$opcaoRand] != null) {
                                 // Mostra a opção que o número randômico escolheu
                                 return $opcao[$opcaoRand];
