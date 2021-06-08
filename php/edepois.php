@@ -1,6 +1,6 @@
 <?php
         //////////////////////////////////////////////////////////////////////////////
-        // No topo do script de todas as páginas (cabecalho.inc.php)
+        // No topo do script de todas as páginas (cabecalho.inc.php):
         // Se tá deslogado
         if (!isset($_SESSION['user_id'])) {
                 // Seta o $uid pra 0
@@ -17,9 +17,9 @@
         } // !isset($_SESSION['user_id'])
 
         //////////////////////////////////////////////////////////////////////////////
-        // Em um arquivo de funções
+        // Em um arquivo de funções:
         // Função pra onde ir depois de logar quando acessa uma página que só tá disponível enquanto logado
-        // Por exemplo num 'minhaconta'
+        // Por exemplo num 'favoritas'
         if (!function_exists('eDepois')) {
                 function eDepois($next_url) {
                 	header("Location: www.dominio.com/entrar/?sequencia=".$next_url."");
@@ -29,7 +29,7 @@
         } // Existe
 
         //////////////////////////////////////////////////////////////////////////////
-        // No topo de uma página que requer login pra ser acessada a função é chamada assim (no topo do script):
+        // No topo de uma página que requer login pra ser acessada, a função é chamada assim:
         session_start();
 	if (!isset($_SESSION['user_id'])) {
 		include_once 'cabecalho.inc.php';
@@ -37,7 +37,7 @@
 	}
 
         //////////////////////////////////////////////////////////////////////////////
-        // Na página de login (/entrar) com o $_GET['sequencia'] no url
+        // Na página de login (/entrar) com o $_GET['sequencia'] no url:
         // (Sendo aquela string $next_url)
         // Faz um $_POST['sequencia'] com o $_GET['sequencia'] e passa com ajax pro arquivo que valida o acesso
         if (isset($_GET['sequencia'])) {
@@ -47,7 +47,7 @@
         } // if
 
         //////////////////////////////////////////////////////////////////////////////
-        // No arquivo que valida o acesso
+        // No arquivo que valida o acesso:
         // Quando dá acesso granted com a senha correta, etc
         // Na hora de redirecionar pra página que vai quando realiza o login
         // Se o $_GET['sequencia'] era diferente de 'minhaconta'
@@ -57,9 +57,17 @@
                 // == 'minhaconta'
                 $_SESSION['depois'] = null;
         } // $_POST['sequencia']
+	// E continua pro conteúdo já logado
+	echo "
+        	<script>
+        		$(document).ready(function() {
+        			window.location.href = 'www.dominio.com/minhaconta/';
+        		});
+        	</script>
+       	";
 
         //////////////////////////////////////////////////////////////////////////////
-        // Na /minhaconta
+        // Na /minhaconta:
         // Vê se entrou pra ir em alguma página especial
         // Ou se só fez login normal ($_POST['sequencia'] do entrar é 'minhaconta')
         // Se a $_SESSION['depois'] foi setada na página que valida o login
@@ -80,4 +88,6 @@
         		";
         	} // if != null
         } // isset($_SESSION['depois'])
+
+	// Se o $_SESSION['depois'] == null, a /minhaconta vai continuar carregando normal
 ?>
