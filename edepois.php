@@ -1,6 +1,6 @@
 <?php
         //////////////////////////////////////////////////////////////////////////////
-        // No topo do script
+        // No topo do script de todas as páginas (cabecalho.inc.php)
         // Se tá deslogado
         if (!isset($_SESSION['user_id'])) {
                 // Seta o $uid pra 0
@@ -29,8 +29,12 @@
         } // Existe
 
         //////////////////////////////////////////////////////////////////////////////
-        // No topo do '/minhaconta' a função é chamada assim:
-        eDepois($next_url);
+        // No topo de uma página que requer login pra ser acessada a função é chamada assim (no topo do script):
+        session_start();
+	if (!isset($_SESSION['user_id'])) {
+		include_once 'cabecalho.inc.php';
+		eDepois($next_url);
+	}
 
         //////////////////////////////////////////////////////////////////////////////
         // Na página de login (/entrar) com o $_GET['sequencia'] no url
