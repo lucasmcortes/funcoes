@@ -40,7 +40,7 @@ function escapeNBSP(original) {
 }
 
 // digitando
-$('#entrada').on('keyup', function () {
+$('#bacana').on('keyup', function () {
         // quando digita vai colocando o valor arrumado pela função naquela id do resultado
         escapeHTML(document.getElementById('entrada').value);
 });
